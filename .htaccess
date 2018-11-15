@@ -1,0 +1,13 @@
+
+RewriteEngine on
+
+# If a directory or a file exists, use it directly
+RewriteEngine on
+RewriteRule ^(.+)?$ /web/$1
+
+AuthType Basic
+
+#AuthName "Restricted Area"
+#AuthBasicProvider file
+#AuthUserFile /home/host1241978/taishettoday.ru/htdocs/preweb/.htpasswd
+#Require valid-user
