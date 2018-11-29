@@ -16,10 +16,15 @@ $this->registerMetaTag(['name' => 'description', 'content' => $artikle->deskript
         </p>
         </div>
         <div class="social-share">
-          <span>By <a href="<?=Url::toRoute(['site/view', 'id'=>$article->id]);?>"><?=$article->athorname;?></a> On <?=$article->getDate();?></span>
+          <span>Автор <?=$article->athorname;?>  Дата <?=$article->getDate();?></span>
           <ul class="viewed-ul">
             <li><a href="<?=Url::toRoute(['site/view', 'id'=>$article->id]);?>"><i class="fa fa-eye"></i></a></li><?=(int) $article->viewed?>
           </ul>
+        </div>
+        <div class="social-share">
+          <span><i class="fab fa-algolia"></i><p><?=$article->time;?></p></span>
+          <span><i class="fas fa-map-marker-alt"></i><p><?=$article->adress;?></p></span>
+          <span><i class="far fa-address-book"></i><p><?=$article->telefon;?></p></span>
         </div>
         <div class="post-content">
           <header class="entry-header">
