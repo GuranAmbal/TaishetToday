@@ -1,13 +1,17 @@
-
 RewriteEngine on
 
 # If a directory or a file exists, use it directly
 RewriteEngine on
 RewriteRule ^(.+)?$ /web/$1
 
-AuthType Basic
+Redirect 301 /saunaAfisha.php http://taishettoday.ru/information/21
+Redirect 301 /telefon_bolnitsy.php http://taishettoday.ru/information/101
+Redirect 301 /sportAfisha.php http://taishettoday.ru/mesta/9
+Redirect 301 /raspisaniya_avtobusov_taishet.php http://taishettoday.ru/mesta_taysheta
+Redirect 301 /raspisaniya_vrachey_taishet.php http://taishettoday.ru/information/135
+Redirect 301 /afisha.php http://taishettoday.ru/sobytiya_v_tayshete
+Redirect 301 /library.php http://taishettoday.ru/istoriya_taysheta
+Redirect 301 /91 http://taishettoday.ru/information/52
+Redirect 301 /105 http://taishettoday.ru/istoriya/12
+Redirect 301 /telefon_apteki.php http://taishettoday.ru/mesta/16
 
-#AuthName "Restricted Area"
-#AuthBasicProvider file
-#AuthUserFile /home/host1241978/taishettoday.ru/htdocs/preweb/.htpasswd
-#Require valid-user
