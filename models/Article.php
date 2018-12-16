@@ -226,6 +226,10 @@ public static function getElCategory()
   {
         return Article::find()->orderBy('category_id desc')->where(['category_id'=>16])->limit(4)->all();
   }
+public static function getTwelveCategory()
+  {
+        return Article::find()->orderBy('category_id desc')->where(['category_id'=>17])->limit(4)->all();
+  }
 public function getAthor()
 {
   return $this->hasOne(User::className(), ['id'=>'user_id']);

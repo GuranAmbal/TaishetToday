@@ -15,6 +15,8 @@ use app\models\CommentForm;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SearchForm;
+use app\models\ArticleSearch;
+use app\models\Massage;
 
 
 class SiteController extends Controller
@@ -106,6 +108,7 @@ class SiteController extends Controller
       $threecategory = Article::getThreeCategory();
       $tencategory = Article::getTenCategory();
       $elcategory = Article::getElCategory();
+      $twelvecategory = Article::getTwelvecategory();
       $categories = Category::getAll();
               return $this->render('index',[
                 'articles'=>$data['articles'],
@@ -117,6 +120,7 @@ class SiteController extends Controller
                 'threecategory'=>$threecategory,
                 'tencategory'=>$tencategory,
                 'elcategory'=>$elcategory,
+                'twelvecategory'=>$twelvecategory,
                 'categories'=>$categories,
               ]);
     }
@@ -196,7 +200,9 @@ class SiteController extends Controller
     $popular = Article::getPopular();
     $recent = Article::getRecent();
     $categories = Category::getAll();
+    $category=Category::findOne($id);
     return $this->render('happends',[
+      'category'=>$category,
       'articles'=>$data['articles'],
       'pagination'=>$data['pagination'],
       'popular'=>$popular,
@@ -294,4 +300,46 @@ class SiteController extends Controller
         }
       }
     }
-}
+
+    public function actionReact()
+    {
+        return $this->render('react');
+    }
+
+    public function actionTelefon()
+    {
+      $searchModel = new ArticleSearch();
+      $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+      return $this->render('telefon_taishet', [
+          'searchModel' => $searchModel,
+          'dataProvider' => $dataProvider,
+      ]);
+
+    }
+
+    public function actionBlog($id)
+    {
+      $currentUserId = Yii::$app->user->identity->getId();
+       $messagesQuery = Message::findMessages($currentUserId, $id);
+       $message = new Message([
+           'from' => $currentUserId,
+           'to' => $id
+       ]);
+       if ($message->load(Yii::$app->request->post()) && $message->validate()) {
+           $message->save();
+           $message = new Message([
+               'from' => $currentUserId
+           ]);
+           if (Yii::$app->request->isPjax) {
+               return $this->renderAjax('_chat', compact('messagesQuery', 'message'));
+           }
+       }
+       if (Yii::$app->request->isPjax) {
+           return $this->renderAjax('_list', compact('messagesQuery', 'message'));
+       }
+
+       return $this->render('chat', compact('messagesQuery', 'message'));
+   }
+
+  }

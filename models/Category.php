@@ -29,6 +29,8 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['title'], 'string', 'max' => 255],
+            [['description'], 'string'],
+            [['keywords'], 'string'],
         ];
     }
 
@@ -40,6 +42,8 @@ class Category extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Title',
+            'description'=> 'Description',
+            'keywords'=>'Keywords'
         ];
     }
 
