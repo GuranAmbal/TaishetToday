@@ -239,4 +239,22 @@ public function viewedCounter()
   $this->viewed +=1;
   return $this->save(false);
 }
+public function countClabs(){
+	return Article::find()->orderBy('category_id desc')->where(['category_id'=>15])->count();
+}
+public function countSport(){
+	return Article::find()->orderBy('category_id desc')->where(['category_id'=>9])->count();
+}
+public function countRest(){
+	return Article::find()->orderBy('category_id desc')->where(['category_id'=>7])->count();
+}
+public function countCafe(){
+	return Article::find()->orderBy('category_id desc')->where(['category_id'=>8])->count();
+}
+public function countHospital(){
+	return Article::find()->orderBy('category_id desc')->where(['category_id'=>16])->count();
+}
+public function countTransport(){
+	return Article::find()->orderBy('category_id desc')->where(['category_id'=>17])->count();
+}
 }

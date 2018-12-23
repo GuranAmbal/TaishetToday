@@ -110,7 +110,13 @@ class SiteController extends Controller
       $elcategory = Article::getElCategory();
       $twelvecategory = Article::getTwelvecategory();
       $categories = Category::getAll();
-              return $this->render('index',[
+      $countclabs = Article::countClabs();
+      $countsport = Article::countSport();
+      $countrest = Article::countRest();
+      $countcafe = Article::countCafe();
+      $counthospital = Article::countHospital();
+      $counttransport = Article::countTransport();
+                   return $this->render('index',[
                 'articles'=>$data['articles'],
                 'pagination'=>$data['pagination'],
                 'popular'=>$popular,
@@ -122,6 +128,12 @@ class SiteController extends Controller
                 'elcategory'=>$elcategory,
                 'twelvecategory'=>$twelvecategory,
                 'categories'=>$categories,
+                'countclabs' => $countclabs,
+                'countsport' => $countsport,
+                'countrest' => $countrest,
+                'countcafe' => $countcafe,
+                'counthospital' => $counthospital,
+                'counttransport' => $counttransport,
               ]);
     }
 
