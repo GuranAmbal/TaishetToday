@@ -16,7 +16,14 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SearchForm;
 use app\models\ArticleSearch;
+use app\models\TagSearch;
 use app\models\Massage;
+use app\models\ArticleTag;
+use yii\helpers\ArrayHelper;
+use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
+
+
 
 
 class SiteController extends Controller
@@ -24,7 +31,6 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-
     public function beforeAction($action)
     {
       $model = new SearchForm();
@@ -108,7 +114,8 @@ class SiteController extends Controller
       $threecategory = Article::getThreeCategory();
       $tencategory = Article::getTenCategory();
       $elcategory = Article::getElCategory();
-      $twelvecategory = Article::getTwelvecategory();
+      $twelvecategory = Article::getTwelveCategory();
+      $education = Article::getEducationCategory();
       $categories = Category::getAll();
       $countclabs = Article::countClabs();
       $countsport = Article::countSport();
@@ -116,6 +123,7 @@ class SiteController extends Controller
       $countcafe = Article::countCafe();
       $counthospital = Article::countHospital();
       $counttransport = Article::countTransport();
+      $counteducation = Article::countEducation();
                    return $this->render('index',[
                 'articles'=>$data['articles'],
                 'pagination'=>$data['pagination'],
@@ -127,6 +135,7 @@ class SiteController extends Controller
                 'tencategory'=>$tencategory,
                 'elcategory'=>$elcategory,
                 'twelvecategory'=>$twelvecategory,
+                'education'=>$education,
                 'categories'=>$categories,
                 'countclabs' => $countclabs,
                 'countsport' => $countsport,
@@ -134,6 +143,7 @@ class SiteController extends Controller
                 'countcafe' => $countcafe,
                 'counthospital' => $counthospital,
                 'counttransport' => $counttransport,
+                'counteducation' =>$counteducation,
               ]);
     }
 
@@ -176,21 +186,7 @@ class SiteController extends Controller
               ]);
     }
 
-  /*  public function actionMap()
-    {
-    $data = Category::getArticlesByCategory($id);
-    $popular = Article::getPopular();
-    $recent = Article::getRecent();
-    $categories = Category::getAll();
-    return $this->render('map',[
-      'articles'=>$data['articles'],
-      'pagination'=>$data['pagination'],
-      'popular'=>$popular,
-      'recent'=>$recent,
-      'categories'=>$categories,
-    ]);
-  }*/
-
+  
     public function actionHistory($id)
     {
       $data = Category::getArticlesByCategory($id);
@@ -313,22 +309,28 @@ class SiteController extends Controller
       }
     }
 
+    public function actionTelefon()
+    {
+  
+     $searchModel = new ArticleSearch();
+     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+     $dataProvider->query->andFilterWhere(['tag_id'=>2]);
+     
+
+        return $this->render('telefon', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+
+    }
+
+     
     public function actionReact()
     {
         return $this->render('react');
     }
 
-    public function actionTelefon()
-    {
-      $searchModel = new ArticleSearch();
-      $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-      return $this->render('telefon_taishet', [
-          'searchModel' => $searchModel,
-          'dataProvider' => $dataProvider,
-      ]);
-
-    }
+    
 
     public function actionBlog($id)
     {

@@ -172,7 +172,7 @@ public static function getPopular()
 
 public static function getRecent()
   {
-    return Article::find()->orderBy('category_id, date asc')->where(['category_id'=>4])->limit(2)->all();
+    return Article::find()->orderBy('category_id, date desc')->where(['category_id'=>4])->limit(2)->all();
   }
 public function getComments()
       {
@@ -184,27 +184,27 @@ public function getArticleComments()
       }
 public static function getOneCategory()
   {
-    return Article::find()->orderBy('category_id desc')->where(['category_id'=>9])->limit(4)->all();
+    return Article::find()->orderBy('viewed desc')->where(['category_id'=>9])->limit(4)->all();
   }
 public static function getTwoCategory()
   {
-    return Article::find()->orderBy('category_id desc')->where(['category_id'=>7])->limit(4)->all();
+    return Article::find()->orderBy('viewed desc')->where(['category_id'=>7])->limit(4)->all();
   }
 public static function getThreeCategory()
   {
-    return Article::find()->orderBy('category_id desc')->where(['category_id'=>8])->limit(4)->all();
+    return Article::find()->orderBy('viewed desc')->where(['category_id'=>8])->limit(4)->all();
   }
 public static function getForeCategory()
   {
-    return Article::find()->orderBy('category_id desc')->where(['category_id'=>6])->limit(4)->all();
+    return Article::find()->orderBy('viewed desc')->where(['category_id'=>6])->limit(4)->all();
   }
 public static function getFiveCategory()
   {
-    return Article::find()->orderBy('category_id desc')->where(['category_id'=>11])->limit(4)->all();
+    return Article::find()->orderBy('viewed desc')->where(['category_id'=>11])->limit(4)->all();
   }
 public static function getSixCategory()
   {
-    return Article::find()->orderBy('category_id desc')->where(['category_id'=>12])->limit(4)->all();
+    return Article::find()-orderBy('viewed desc')->where(['category_id'=>12])->limit(4)->all();
   }
 public static function getSevenCategory()
   {
@@ -212,24 +212,28 @@ public static function getSevenCategory()
   }
 public static function getEightCategory()
   {
-    return Article::find()->orderBy('category_id desc')->where(['category_id'=>13])->limit(4)->all();
+    return Article::find()->orderBy('viewed desc')->where(['category_id'=>13])->limit(4)->all();
   }
 public static function getNineCategory()
   {
-        return Article::find()->orderBy('category_id desc')->where(['category_id'=>14])->limit(4)->all();
+        return Article::find()->orderBy('viewed desc')->where(['category_id'=>14])->limit(4)->all();
   }
 public static function getTenCategory()
   {
-        return Article::find()->orderBy('category_id desc')->where(['category_id'=>15])->limit(4)->all();
+        return Article::find()->orderBy('viewed desc')->where(['category_id'=>15])->limit(4)->all();
   }
 public static function getElCategory()
   {
-        return Article::find()->orderBy('category_id desc')->where(['category_id'=>16])->limit(4)->all();
+        return Article::find()->orderBy('viewed desc')->where(['category_id'=>16])->limit(4)->all();
   }
 public static function getTwelveCategory()
   {
-        return Article::find()->orderBy('category_id desc')->where(['category_id'=>17])->limit(4)->all();
+        return Article::find()->orderBy('viewed desc')->where(['category_id'=>17])->limit(4)->all();
   }
+public static function getEducationCategory()
+  {
+        return Article::find()->orderBy('viewed desc')->where(['category_id'=>18])->limit(4)->all();
+  }  
 public function getAthor()
 {
   return $this->hasOne(User::className(), ['id'=>'user_id']);
@@ -256,5 +260,8 @@ public function countHospital(){
 }
 public function countTransport(){
 	return Article::find()->orderBy('category_id desc')->where(['category_id'=>17])->count();
+}
+public function countEducation(){
+	return Article::find()->orderBy('category_id desc')->where(['category_id'=>18])->count();
 }
 }

@@ -27,7 +27,12 @@ class PublicAsset extends AssetBundle
     ];
     public $js = [
         "public/js/scripts.js",
-        "public/js/jquery.min.js",
+        /*"public/js/jquery.min.js",*/
+        "//unpkg.com/react@16/umd/react.development.js",
+        "//unpkg.com/react-dom@16/umd/react-dom.development.js",
+        "//unpkg.com/@pusher/chatkit",
+        "//unpkg.com/babel-standalone@latest/babel.min.js",
+        ["public/js/index.js", "type"=>"text/babel"],
     ];
 
 }

@@ -2,24 +2,28 @@
 
 namespace app\models;
 
+
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Article;
+use app\models\ArticleTag;
+
 
 /**
  * ArticleSearch represents the model behind the search form of `app\models\Article`.
  */
 class ArticleSearch extends Article
 {
+    public $roleTags;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'viewed', 'user_id', 'status', 'category_id'], 'integer'],
-            [['title', 'description', 'content', 'date', 'image'], 'safe'],
+            [['id', 'viewed', 'user_id', 'status', 'category_id', 'telefon'], 'integer'],
+            [['title', 'adress', 'description', 'content', 'date', 'image',], 'safe'],
         ];
     }
 
@@ -41,14 +45,14 @@ class ArticleSearch extends Article
      */
     public function search($params)
     {
-        $query = Article::find();
-
+       $query = Article::find();
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
+        $query->joinWith(['tags']);
+        
         $this->load($params);
 
         if (!$this->validate()) {
@@ -65,13 +69,17 @@ class ArticleSearch extends Article
             'user_id' => $this->user_id,
             'status' => $this->status,
             'category_id' => $this->category_id,
+            'adress' => $this->adress,
+            'telefon'=>$this->telefon,
+
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
+        $query->andFilterWhere(['like', Article::tableName().'.title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'image', $this->image]);
 
+           
         return $dataProvider;
     }
 }

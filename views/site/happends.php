@@ -1,9 +1,10 @@
 <?php
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
-$this->title = 'места тайшета';
-$this->registerMetaTag(['name' => 'keywords', 'content' => 'Тайшетский сайт, городской портал тайшета, история тайшета, герои тайшета, Герои ВОВ тайшета, Ветераны города Тайшета, герои соц. труда тайшета, гражданская война в тайшете, почетные жители города тайшета, знаменитые люди тайшета, знаменитые места в тайшете, исторические памятники в тайшете, церкви тайшета, достопремечательности тайшета']);
-$this->registerMetaTag(['name' => 'description', 'content' => 'Биография великих жителей, описание исторических событий и мест города Тайшета']);
+$this->title = $category->title;
+$this->registerMetaTag(['name' => 'keywords', 'content' => $category->keywords]);
+$this->registerMetaTag(['name' => 'description', 'content' => $category->description]);
+
 ?>
 <div class="main_place">
 <?php foreach($articles as $article):?>

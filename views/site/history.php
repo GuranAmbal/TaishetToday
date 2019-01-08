@@ -2,6 +2,10 @@
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 ?>
+<?php
+echo LinkPager::widget([
+'pagination' => $pagination,]);
+?>
 <div class="main_place">
 <?php foreach($articles as $article):?>
     <div class="place">
@@ -15,7 +19,12 @@ use yii\widgets\LinkPager;
       </div>
     </div>
 <?php endforeach;?>
+
 </div>
+<?php
+echo LinkPager::widget([
+'pagination' => $pagination,]);
+?>
 <?= $this->render('/partiales/sidebar', [
 	'popular'=>$popular,
 	'recent'=>$recent,

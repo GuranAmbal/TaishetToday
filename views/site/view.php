@@ -4,7 +4,7 @@ use yii\helpers\Url;
 use yii\widgets\LinkPager;
 $this->title = $article->title;
 $this->registerMetaTag(['name' => 'keywords', 'content' => $article->keywords]);
-$this->registerMetaTag(['name' => 'description', 'content' => $artikle->deskription]);
+$this->registerMetaTag(['name' => 'description', 'content' => $artiсle->deskription]);
 
 ?>
 <div class="main_container">
@@ -21,10 +21,11 @@ $this->registerMetaTag(['name' => 'description', 'content' => $artikle->deskript
             <li><a href="<?=Url::toRoute(['site/view', 'id'=>$article->id]);?>"><i class="fa fa-eye"></i></a></li><?=(int) $article->viewed?>
           </ul>
         </div>
-        <div class="social-share">
-          <span><i class="fab fa-algolia"></i><p><?=$article->time;?></p></span>
-          <span><i class="fas fa-map-marker-alt"></i><p><?=$article->adress;?></p></span>
-          <span><i class="far fa-address-book"></i><p><?=$article->telefon;?></p></span>
+        <div class="small_info">
+          <div class="address_place"><i class="fab fa-algolia"></i><p><?=$article->time;?></p></div>
+          <div class="address_place"><i class="fas fa-map-marker-alt"></i><p><?=$article->adress;?></p></div>
+          <div class="address_place"><i class="far fa-address-book"></i><p><?=$article->telefon;?></p></div>
+          <div class="address_place"><i class="fas fa-dollar-sign"></i><p><?=$article->money;?></p></div>
         </div>
         <div class="post-content">
           <header class="entry-header">

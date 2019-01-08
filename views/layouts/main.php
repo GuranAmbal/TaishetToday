@@ -49,6 +49,9 @@ PublicAsset::register($this);
     <div class="Navbar__Link">
       <a href="<?=Url::toRoute(['site/place']);?>">История</a>
     </div>
+    <div class="Navbar__Link">
+      <a href="<?=Url::toRoute(['site/telefon']);?>">Телефоны</a>
+    </div>
   </nav>
   <nav class="Navbar__Items Navbar__Items--right">
     <?php $form = ActiveForm::begin();?>

@@ -9,7 +9,7 @@ use yii\widgets\LinkPager;
 		<a href="<?=Url::toRoute(['site/about']);?>">Подробно</a>
 	</div>
 	<div class="best_happends">
-			<div class="title_happends"><h3>Лучшие события</h3></div>
+			<div class="title_happends"><h3>Популярные посты</h3></div>
 	<?php foreach ($popular as $article):?>
 		   <div class="small_happends">
 					 <img src="<?= $article->getImage();?>" />
@@ -21,7 +21,7 @@ use yii\widgets\LinkPager;
 	<?php endforeach;?>
 </div>
 <div class="best_places">
-	<div class="title_happends"><h3>Лучшие места</h3></div>
+	<div class="title_happends"><h3>Последние события</h3></div>
 	<?php foreach ($recent as $article):?>
 		<div class="small_happends"><div class="small_img"><img src="<?= $article->getImage();?>" /></div>
 		 <div class="text_happends">
