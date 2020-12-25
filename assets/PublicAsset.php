@@ -20,14 +20,21 @@ class PublicAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        "public/css/bootstrap.min.css",
         "public/css/font-awesome.min.css",
         "public/css/style.css",
-        "//use.fontawesome.com/releases/v5.1.0/css/all.css",
+        "public/css/swiper.min.css",
+        "/use.fontawesome.com/releases/v5.1.0/css/all.css",
 
     ];
     public $js = [
+        "public/js/jquery.min.js",
+        
+        "public/js/swiper.min.js",
+        "public/js/slider-main.js",
+        "public/js/main.js",
         "public/js/scripts.js",
-        /*"public/js/jquery.min.js",*/
+
         "//unpkg.com/react@16/umd/react.development.js",
         "//unpkg.com/react-dom@16/umd/react-dom.development.js",
         "//unpkg.com/@pusher/chatkit",

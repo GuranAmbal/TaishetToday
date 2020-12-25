@@ -152,8 +152,9 @@ class ArticleController extends Controller
 
     public function actionSetCategory($id)
     {
-
+      
        $article = $this->findModel($id);/*цепляем статью*/
+     
        $selectedCategory = $article->category->id;/*готовим значение для формы*/
        $categories = ArrayHelper::map(Category::find()->all(), 'id', 'title');/*выбираем текущий id*/
 

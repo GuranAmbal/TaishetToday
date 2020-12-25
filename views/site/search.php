@@ -4,11 +4,11 @@ use yii\widgets\LinkPager;
 ?>
 
   <?php if($q==""){?>
-    <h2>Вы ввели пустой запрос</h2>
+    <p class="search_title">Вы ввели пустой запрос</p>
   <?php } else {?>
-    <h1>Результаты поиска: <?=$q?></h1>
+    <p class="search_title">Результаты поиска: <?=$q?></p>
   <?php if(!$articles) { ?>
-    <p>Ничего не найдено</p>
+    <p class="search_title">Ничего не найдено</p>
   <?php } else { ?>
     <div class="post_search">
     <?php foreach($articles as $article):?>

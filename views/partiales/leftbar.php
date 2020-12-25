@@ -3,35 +3,42 @@
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 ?>
-<div class="post_happends">
-  <div class="small_happends">
-    <aside>
-      <h3>Популярные посты</h3>
-      <?php foreach ($popular as $article):?>
-        <div class="small-thamb">
-          <div class="small-thamb-img">
-              <a href="<?=Url::toRoute(['site/view', 'id'=>$article->id]);?>"><img src="<?= $article->getImage();?>" /></a>
-          </div>
-          <div class="p-content">
-            <a href="<?=Url::toRoute(['site/view', 'id'=>$article->id]);?>" class="text-uppercase"><?=$article->title?></a><br />
-            <span class="p-date"><?=$article->getDate();?></span>
-          </div>
-        </div>
-      <?php endforeach;?>
-    </aside>
-    <aside class="resend_post">
-      <h3>Последние посты</h3>
-      <?php foreach ($recent as $article):?>
-        <div class="small-thamb">
-        <div class="small-thamb-img">
-          <a href="<?=Url::toRoute(['site/view', 'id'=>$article->id]);?>"><img src="<?= $article->getImage();?>" /></a>
-         </div>
-          <div class="p-content">
-            <a href="<?=Url::toRoute(['site/view', 'id'=>$article->id]);?>" class="text-uppercase"><?=$article->title?></a><br />
-            <span class="p-date"><?=$article->getDate();?></span>
-          </div>
-        </div>
-      <?php endforeach;?>
-    </aside>
-  </div>
-</div>
+	<!-- post widget -->
+  <div class="aside-widget">
+								<div class="section-title">
+									<h2>Популярные статьи</h2>
+								</div>
+								<?php foreach($popular as $article):?>
+								<div class="post post-widget">
+									<a class="post-img" href="<?=Url::toRoute(['site/view', 'id'=>$article->id]);?>"><img src="<?= $article->getImage();?>" alt=""></a>
+									<div class="post-body">
+										<h3 class="post-title"><a href="<?=Url::toRoute(['site/view', 'id'=>$article->id]);?>"><?= $article->title;?></a></h3>
+									</div>
+								</div>
+								<?php endforeach?>
+
+							</div>
+							<!-- /post widget -->
+
+							<!-- post widget -->
+							<div class="aside-widget">
+								<div class="section-title">
+									<h2>Последние события</h2>
+								</div>
+								<?php foreach($recent as $article):?>
+								<div class="post post-thumb">
+									<a class="post-img" href="<?=Url::toRoute(['site/view', 'id'=>$article->id]);?>"><img class="recent__img" src="<?= $article->getImage();?>" alt=""></a>
+									<div class="post-body">
+										<div class="post-meta">
+											<a class="post-category cat-3" href="category.html"><?= $article->category->title;?></a>
+											<span class="post-date"><?=$article->getDate();?></span>
+										</div>
+										<h3 class="post-title"><a href="<?=Url::toRoute(['site/view', 'id'=>$article->id]);?>"><?= $article->title;?></a></h3>
+									</div>
+								</div>
+								<?php endforeach?>
+							
+							</div>
+
+
+

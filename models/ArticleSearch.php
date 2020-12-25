@@ -51,6 +51,7 @@ class ArticleSearch extends Article
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+        
         $query->joinWith(['tags']);
         
         $this->load($params);
@@ -78,7 +79,7 @@ class ArticleSearch extends Article
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'image', $this->image]);
-
+        
            
         return $dataProvider;
     }

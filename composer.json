@@ -24,7 +24,8 @@
         "bubasuma/yii2-simplechat": "*",
         "bower-asset/twig.js" : "0.8.4@stable",
         "yiisoft/yii2-twig": "~2.0.0",
-        "yiisoft/yii2-faker": "*"
+        "yiisoft/yii2-faker": "*",
+        "sintret/yii2-chat-adminlte": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -1,44 +1,67 @@
 <?php if(!empty($comments)):?>
-
+    <div class="section-row">
+							
+                            <div class="post-comments">                     
 <?php foreach($comments as $comment):?>
-  <div class="bottom-comment"><!--bottom comment-->
-      <div class="comment-img">
-          <img width="50" class="img-circle" src="<?= $comment->user->image; ?>" alt="">
-      </div>
+   
 
-      <div class="comment-text">
-          <a href="#" class="replay btn pull-right"> Replay</a>
-          <h5><?= $comment->user->name;?></h5>
+							
+								<!-- comment -->
+								<div class="media">
+									<div class="media-left">
+										<img class="media-object" src="<?= $comment->user->image; ?>" alt="">
+									</div>
+									<div class="media-body">
+										<div class="media-heading">
+											<h4><?= $comment->user->name;?></h4>
+											<span class="time"><?= $comment->getDate();?></span>
+											
+										</div>
+										<p><?= $comment->text; ?></p>
 
-          <p class="comment-date">
-              <?= $comment->getDate();?>
-          </p>
+									
+								<!-- /comment -->
 
-
-          <p class="para"><?= $comment->text; ?></p>
-      </div>
-  </div>
+							
 <?php endforeach;?>
-
+    </div>
+</div>
 <?php endif;?>
 
 <?php if(!Yii::$app->user->isGuest): ?>
-<div class="leave-comment"><!--leave comment-->
-  <h4>Напишите ваш комментарий</h4>
-  <?php if(Yii::$app->session->getFlash('comment')):?>
-      <div class="alert alert-success" role="alert">
-          <?= Yii::$app->session->getFlash('comment'); ?>
-      </div>
-  <?php endif;?>
-  <?php $form = \yii\widgets\ActiveForm::begin([
-      'action'=>['site/comment', 'id'=>$article->id],
-      'options'=>['class'=>'contact-form', 'role'=>'form']])?>
-  <div class="form-group">
-      <div class="col-md-12">
-          <?= $form->field($commentForm, 'comment')->textarea(['class'=>'form-control','placeholder'=>'Написать комментарий'])->label(false)?>
-      </div>
-  </div>
-  <button type="submit" class="btn send-btn">Отправить комментарий</button>
-  <?php \yii\widgets\ActiveForm::end();?>
-</div><!--end leave comment-->
+	<!-- reply -->
+    <div class="section-row">
+							<div class="section-title">
+								<h2>Напишите ваш комментарий</h2>
+								<?php if(Yii::$app->session->getFlash('comment')):?>
+                                    <div class="alert alert-success" role="alert">
+                                        <?= Yii::$app->session->getFlash('comment'); ?>
+                                    </div>
+                                <?php endif;?>
+                            </div>
+                            <?php $form = \yii\widgets\ActiveForm::begin([
+                            'action'=>['site/comment', 'id'=>$article->id],
+                            'options'=>['class'=>'post-reply', 'role'=>'form']])?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                 <?= $form->field($commentForm, 'comment')->textarea(['class'=>'form-control','placeholder'=>'Написать комментарий'])->label(false)?>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="primary-button">Отправить </button>
+                        <?php \yii\widgets\ActiveForm::end();?>
+							
+						</div>
+            
+                        <!-- /reply -->
+                            <?php else:?>
+                                <div class="section-row">
+                                <div class="section-title text-center">   
+                                    <p style="font-size: 16px;font-weight: 600;">Зарегестрируйтесь что бы оставить комментарий:</p>
+                                    </div>
+                            </div>                  
 <?php endif;?>
+
+
+					

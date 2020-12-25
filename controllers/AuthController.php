@@ -54,12 +54,12 @@ class AuthController extends Controller
 
    public function actionLoginVk($uid, $first_name, $photo)
    {
-
-     $user = new User;
+var_dump($uid, $first_name, $photo);
+    /* $user = new User;
      if($user-> saveFromVk($uid,$first_name,$photo))
      {
        return $this->redirect(['site/index']);
-     }
+     }*/
 
    }
    public function actionTest()
