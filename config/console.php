@@ -22,6 +22,9 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'authManager' => [
+            'class' => 'dektrium\rbac\components\DbManager',
+        ],
         'log' => [
             'targets' => [
                 [

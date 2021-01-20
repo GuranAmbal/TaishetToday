@@ -38,11 +38,15 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/admin/default/index']],
-            ['label' => 'Articles', 'url' => ['/admin/article/index']],
-            ['label' => 'Commentaries', 'url' => ['/admin/comment/index']],
-            ['label' => 'Categories', 'url' => ['/admin/category/index']],
-            ['label' => 'Tags', 'url' => ['/admin/tag/index']]
+            ['label' => 'Главная', 'url' => ['/admin/default/index']],
+            ['label' => 'Статьи', 'url' => ['/admin/article/index']],
+            ['label' => 'Комментарии', 'url' => ['/admin/comment/index']],
+            ['label' => 'Категории', 'url' => ['/admin/category/index']],
+            ['label' => 'Теги', 'url' => ['/admin/tag/index']],
+            ['label' => 'Пользователи', 'url' => ['/user/admin/index']],
+            ['label' => 'Объявления', 'url' => ['/admin/declaration/index']],
+            ['label' => 'Категории объявлений', 'url' => ['/admin/declaration-category/index']],
+            ['label' => 'Типы объявлений', 'url' => ['/admin/declaration-rasdel/index']]
         ],
     ]);
     NavBar::end();

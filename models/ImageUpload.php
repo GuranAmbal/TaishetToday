@@ -14,7 +14,7 @@ class ImageUpload extends Model{
     {
         return [
             [['image'], 'required'],
-            [['image'], 'file', 'extensions' => 'jpg,png']
+            [['image'], 'file', 'extensions' => 'jpg,png,jpeg']
         ];
     }
     public function uploadFile(UploadedFile $file, $currentImage)

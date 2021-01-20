@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link http://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -25,21 +26,16 @@ class PublicAsset extends AssetBundle
         "public/css/style.css",
         "public/css/swiper.min.css",
         "/use.fontawesome.com/releases/v5.1.0/css/all.css",
+        "public/css/jquery.fancybox.min.css",
 
     ];
     public $js = [
         "public/js/jquery.min.js",
-        
+        "public/js/jquery.fancybox-1.3.4.pack.js",
         "public/js/swiper.min.js",
         "public/js/slider-main.js",
         "public/js/main.js",
         "public/js/scripts.js",
 
-        "//unpkg.com/react@16/umd/react.development.js",
-        "//unpkg.com/react-dom@16/umd/react-dom.development.js",
-        "//unpkg.com/@pusher/chatkit",
-        "//unpkg.com/babel-standalone@latest/babel.min.js",
-        ["public/js/index.js", "type"=>"text/babel"],
     ];
-
 }

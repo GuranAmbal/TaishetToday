@@ -10,7 +10,9 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
 use app\models\Article;
+use app\models\Declaration;
 use app\models\Category;
+use app\models\DeclarationCategory;
 use app\models\CommentForm;
 use app\models\LoginForm;
 use app\models\ContactForm;
@@ -31,35 +33,33 @@ use yii\web\UploadedFile;
 class SiteController extends Controller
 {
   /**
-  * {@inheritdoc}
-  */
+   * {@inheritdoc}
+   */
   public function beforeAction($action)
   {
     $model = new SearchForm();
-    if($model->load(Yii::$app->request->post()) && $model->validate())
-    {
-      $q=Html::encode($model->q);
-      return $this->redirect(Yii::$app->urlManager->createUrl(['site/search','q'=>$q]));
-
+    if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+      $q = Html::encode($model->q);
+      return $this->redirect(Yii::$app->urlManager->createUrl(['site/search', 'q' => $q]));
     }
     return true;
   }
   public function actionSearch()
   {
     $q = Yii::$app->getRequest()->getQueryParam('q');
-    $query = Article::find()->where(['hide'=>0])->where(['like','content', $q])->orWhere(['like','title', $q]);
+    $query = Article::find()->where(['hide' => 0])->where(['like', 'content', $q])->orWhere(['like', 'title', $q]);
     $pagination = new Pagination([
-      'defaultPageSize'=>5,
-      'totalCount'=>$query->count(),
+      'defaultPageSize' => 5,
+      'totalCount' => $query->count(),
     ]);
     $articles = $query->offset($pagination->offset)
-    ->limit($pagination->limit)
-    ->all();
+      ->limit($pagination->limit)
+      ->all();
     Article::getRecent($articles);
-    return $this->render('search',[
-      'articles'=>$articles,
-      'q'=>$q,
-      'pagination'=>$pagination,
+    return $this->render('search', [
+      'articles' => $articles,
+      'q' => $q,
+      'pagination' => $pagination,
     ]);
   }
   public function behaviors()
@@ -86,8 +86,8 @@ class SiteController extends Controller
   }
 
   /**
-  * {@inheritdoc}
-  */
+   * {@inheritdoc}
+   */
   public function actions()
   {
     return [
@@ -102,14 +102,14 @@ class SiteController extends Controller
   }
 
   /**
-  * Displays homepage.
-  *
-  * @return string
-  */
+   * Displays homepage.
+   *
+   * @return string
+   */
   public function actionIndex()
   {
-    
-    $data =  Article:: getAll();
+
+    $data =  Article::getAll();
     $popular = Article::getPopular();
     $recent = Article::getRecent();
     $events = Article::getEvents();
@@ -119,29 +119,29 @@ class SiteController extends Controller
     $categoryHistory = Category::getAllHistory();
     $searchModel = new ArticleSearch();
     $schedules = $searchModel->search(Yii::$app->request->queryParams);
-    $schedules->query->andFilterWhere(['tag_id'=>9]);
-   
-    return $this->render('index',[
-      
-      'articles'=>$data['articles'],
-      'pagination'=>$data['pagination'],
-      'popular'=>$popular,
-      'recent'=>$recent,
-      'events'=>$events,
-      'places'=>$places,
-      'history'=>$history,
-      'categoryPlace'=>$categoryPlace,
-      'categoryHistory'=>$categoryHistory,
-      'schedules'=>$schedules
-     
+    $schedules->query->andFilterWhere(['tag_id' => 9]);
+
+    return $this->render('index', [
+
+      'articles' => $data['articles'],
+      'pagination' => $data['pagination'],
+      'popular' => $popular,
+      'recent' => $recent,
+      'events' => $events,
+      'places' => $places,
+      'history' => $history,
+      'categoryPlace' => $categoryPlace,
+      'categoryHistory' => $categoryHistory,
+      'schedules' => $schedules
+
     ]);
   }
 
   /**
-  * Login action.
-  *
-  * @return Response|string
-  */
+   * Login action.
+   *
+   * @return Response|string
+   */
 
   public function actionContact()
   {
@@ -157,22 +157,22 @@ class SiteController extends Controller
   }
 
   /**
-  * Displays about page.
-  *
-  * @return string
-  */
+   * Displays about page.
+   *
+   * @return string
+   */
   public function actionAbout()
   {
-    $data =  Article:: getAll();
+    $data =  Article::getAll();
     $popular = Article::getPopular();
     $recent = Article::getRecent();
     $categories = Category::getAll();
-    return $this->render('about',[
-      'articles'=>$data['articles'],
-      'pagination'=>$data['pagination'],
-      'popular'=>$popular,
-      'recent'=>$recent,
-      'categories'=>$categories,
+    return $this->render('about', [
+      'articles' => $data['articles'],
+      'pagination' => $data['pagination'],
+      'popular' => $popular,
+      'recent' => $recent,
+      'categories' => $categories,
     ]);
   }
 
@@ -183,14 +183,14 @@ class SiteController extends Controller
     $popular = Article::getPopular();
     $recent = Article::getRecent();
     $categoryHistory = Category::getAllHistory();
-    $category=Category::findOne($id);
-    return $this->render('history-category',[
-      'category'=>$category,
-      'articles'=>$data['articles'],
-      'pagination'=>$data['pagination'],
-      'popular'=>$popular,
-      'recent'=>$recent,
-      'categoryHistory'=>$categoryHistory,
+    $category = Category::findOne($id);
+    return $this->render('history-category', [
+      'category' => $category,
+      'articles' => $data['articles'],
+      'pagination' => $data['pagination'],
+      'popular' => $popular,
+      'recent' => $recent,
+      'categoryHistory' => $categoryHistory,
     ]);
   }
 
@@ -200,105 +200,105 @@ class SiteController extends Controller
     $popular = Article::getPopular();
     $recent = Article::getRecent();
     $categoryPlace = Category::getAllPlace();
-    $category=Category::findOne($id);
-    return $this->render('event-category',[
-      'category'=>$category,
-      'articles'=>$data['articles'],
-      'pagination'=>$data['pagination'],
-      'popular'=>$popular,
-      'recent'=>$recent,
-      'categoryPlace'=>$categoryPlace,
+    $categoryHistory = Category::getAllHistory();
+    $category = Category::findOne($id);
+    return $this->render('event-category', [
+      'category' => $category,
+      'articles' => $data['articles'],
+      'pagination' => $data['pagination'],
+      'popular' => $popular,
+      'recent' => $recent,
+      'categoryPlace' => $categoryPlace,
+      'categoryHistory' => $categoryHistory,
     ]);
   }
 
- 
+
   public function actionView($id)
   {
-    $data = Category::getArticlesByCategory($id);
-    $article=Article::findOne($id);
+
+    $article = Article::findOne($id);
     $popular = Article::getPopular();
     $recent = Article::getRecent();
     $categoryPlace = Category::getAllPlace();
     $categoryHistory = Category::getAllHistory();
     $comments = $article->getArticleComments();
     $commentForm = new CommentForm();
-    $article -> viewedCounter();
-    return $this->render('view',[
-      'description'=>str_replace('&nbsp;', ' ', strip_tags($article->description)),
-      'article'=>$article,
-      'popular'=>$popular,
-      'recent'=>$recent,
-      'categoryPlace'=>$categoryPlace, 
-      'categoryHistory'=>$categoryHistory,
-      'comments'=>$comments,
-      'commentForm'=>$commentForm,
+    $article->viewedCounter();
+    return $this->render('view', [
+      'description' => str_replace('&nbsp;', ' ', strip_tags($article->description)),
+      'article' => $article,
+      'popular' => $popular,
+      'recent' => $recent,
+      'categoryPlace' => $categoryPlace,
+      'categoryHistory' => $categoryHistory,
+      'comments' => $comments,
+      'commentForm' => $commentForm,
     ]);
   }
 
   public function actionHistorical()
   {
-    $data =  Article:: getAll();
+    $data =  Article::getAll();
     $popular = Article::getPopularHistory();
     $recent = Article::getRecent();
     $history = Article::getAllHistoryCategorys();
     $categoryHistory = Category::getAllHistory();
-   
 
-   
-    return $this->render('historical',[
-      'articles'=>$data['articles'],
-      'pagination'=>$data['pagination'],
-      'popular'=>$popular,
-      'recent'=>$recent,
-      'history'=>$history,
-      'categoryHistory'=>$categoryHistory,
+
+
+    return $this->render('historical', [
+      'articles' => $data['articles'],
+      'pagination' => $data['pagination'],
+      'popular' => $popular,
+      'recent' => $recent,
+      'history' => $history,
+      'categoryHistory' => $categoryHistory,
     ]);
   }
   public function actionEvents()
   {
 
-    $data =  Article:: getAll();
+    $data =  Article::getAll();
     $popular = Article::getPopularEvents();
     $recent = Article::getRecent();
     $events = Article::getEvents();
     $categoryPlace = Category::getAllPlace();
-    return $this->render('events',[
-      'articles'=>$data['articles'],
-      'pagination'=>$data['pagination'],
-      'popular'=>$popular,
-      'recent'=>$recent,
-      'events'=>$events,
-      'categoryPlace'=>$categoryPlace,
+    return $this->render('events', [
+      'articles' => $data['articles'],
+      'pagination' => $data['pagination'],
+      'popular' => $popular,
+      'recent' => $recent,
+      'events' => $events,
+      'categoryPlace' => $categoryPlace,
     ]);
   }
   public function actionPlaces()
   {
 
-    $data =  Article:: getAll();
+    $data =  Article::getAll();
     $popular = Article::getPopularPlaces();
     $recent = Article::getRecent();
     $places = Article::getAllMain();
     $categoryPlace = Category::getAllPlace();
-    return $this->render('places',[
-      'articles'=>$data['articles'],
-      'pagination'=>$data['pagination'],
-      'popular'=>$popular,
-      'recent'=>$recent,
-      'places'=> $places,
-      'categoryPlace'=>$categoryPlace,
+    return $this->render('places', [
+      'articles' => $data['articles'],
+      'pagination' => $data['pagination'],
+      'popular' => $popular,
+      'recent' => $recent,
+      'places' => $places,
+      'categoryPlace' => $categoryPlace,
     ]);
   }
   public function actionComment($id)
   {
     $model = new CommentForm();
 
-    if(Yii::$app->request->isPost)
-    {
+    if (Yii::$app->request->isPost) {
       $model->load(Yii::$app->request->post());
-      if($model->saveComment($id))
-      {
+      if ($model->saveComment($id)) {
         Yii::$app->getSession()->setFlash('comment', 'Ваш комментарий будет скоро добавлен');
-        return $this->redirect(['site/view','id'=>$id]);
+        return $this->redirect(['site/view', 'id' => $id]);
       }
     }
   }
@@ -308,17 +308,59 @@ class SiteController extends Controller
 
     $searchModel = new ArticleSearch();
     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-    $dataProvider->query->andFilterWhere(['tag_id'=>2]);
+    $dataProvider->query->andFilterWhere(['tag_id' => 2]);
 
 
     return $this->render('telefon', [
       'searchModel' => $searchModel,
       'dataProvider' => $dataProvider,
     ]);
-
   }
-  
 
- 
+  public function actionDecloration()
+  {
+    $declorates = Declaration::getAll();
+    $categoryDecloration = DeclarationCategory::getAll();
 
+
+
+    return $this->render('decloration', [
+      "declorates" => $declorates['declaration'],
+      'categoryDecloration' => $categoryDecloration,
+
+    ]);
+  }
+
+  public function actionViewDecloration($id)
+  {
+
+    $decloration = Declaration::findOne($id);
+
+    $recent = Declaration::getRecent();
+    $categoryDecloration = DeclarationCategory::getAll();
+
+    $decloration->viewedCounter();
+    return $this->render('view-decloration', [
+      'description' => str_replace('&nbsp;', ' ', strip_tags($decloration->description)),
+      'decloration' => $decloration,
+      'recent' => $recent,
+      'categoryDecloration' => $categoryDecloration,
+    ]);
+  }
+  public function actionDeclorationCategory($id)
+  {
+    $data = DeclarationCategory::getArticlesByCategory($id);
+
+    $recent = Declaration::getRecent();
+    $categoryDecloration = DeclarationCategory::getAll();
+    $category = DeclarationCategory::findOne($id);
+    return $this->render('decloration-category', [
+      'category' => $category,
+      'decloration' => $data['decloration'],
+      'pagination' => $data['pagination'],
+
+      'recent' => $recent,
+      'categoryDecloration' => $categoryDecloration,
+    ]);
+  }
 }
