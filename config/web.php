@@ -90,12 +90,20 @@ $config = [
       ],
       'transport' => [
         'class' => 'Swift_SmtpTransport',
+<<<<<<< HEAD
         'host' => 'smtp.gmail.com',
         'username' => 'dedguran@gmail.com',
         'password' => 'sovetik2021',
         'port' => '587',
         'encryption' => 'tls',
         'streamOptions' => ['ssl' => ['allow_self_signed' => true, 'verify_peer' => false, 'verify_peer_name' => false,],]
+=======
+        'host' => 'smtp.yandex.ru',
+        'username' => 'dusha2b63gur@yandex.ru',
+        'password' => '',
+        'port' => '465',
+        'encryption' => 'ssl',
+>>>>>>> b0aa9dbba95428bdfb10483e96f827a12cfc0d5d
       ],
     ],
 
