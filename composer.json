@@ -19,15 +19,15 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "rmrevin/yii2-fontawesome": "~2.17",
-        "bower-asset/font-awesome": "^5.1",
-        "fxp/composer-asset-plugin": "^1.4",
+        "bower-asset/font-awesome": "^5.1",        
         "bubasuma/yii2-simplechat": "*",
         "bower-asset/twig.js" : "0.8.4@stable",
         "yiisoft/yii2-twig": "~2.0.0",
         "yiisoft/yii2-faker": "*",
         "sintret/yii2-chat-adminlte": "dev-master",
         "dektrium/yii2-user": "^0.9.14",
-        "dektrium/yii2-rbac": "1.0.0-alpha@dev"
+        "dektrium/yii2-rbac": "1.0.0-alpha@dev",
+        "2amigos/yii2-date-picker-widget": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

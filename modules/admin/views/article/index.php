@@ -19,32 +19,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Article', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    <p>
+        <?= Html::a('Delite Event Articles', ['delete-events'], ['class' => 'btn btn-success']) ?>
+    </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'title',
-            'description:ntext',
-
-            'keywords',
             'athorname',
-            [
-                'format' => 'html',
-                'label' => 'Image',
-                'value' => function ($data) {
-                    return Html::img($data->getImage(), ['width' => 200]);
-                }
-            ],
-            'img_s',
-            //'viewed',
-            //'user_id',
-            //'status',
-            //'category_id',
-
+            'viewed',
+            'time',
+            
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

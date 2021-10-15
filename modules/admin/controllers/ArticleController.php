@@ -44,6 +44,7 @@ class ArticleController extends Controller
   {
     $searchModel = new ArticleSearch();
     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    $dataProvider->query->orderBy('id desc');
 
     return $this->render('index', [
       'searchModel' => $searchModel,
@@ -71,6 +72,7 @@ class ArticleController extends Controller
    */
   public function actionCreate()
   {
+    
     $model = new Article();
 
     if ($model->load(Yii::$app->request->post()) && $model->saveArticle()) {
@@ -116,6 +118,15 @@ class ArticleController extends Controller
     return $this->redirect(['index']);
   }
 
+  public function actionDeleteEvents()
+  {
+    
+    $query = Article::find()->where(['category_id' => '4'])->asArray()->all();
+   
+    die(var_dump( $query));
+   
+    return $this->redirect(['index']);
+  }
   /**
    * Finds the Article model based on its primary key value.
    * If the model is not found, a 404 HTTP exception will be thrown.
