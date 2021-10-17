@@ -43,6 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
             'category_id',
             'time',
+            'time_end',
             'adress',
             'telefon',
             'smdeskription',

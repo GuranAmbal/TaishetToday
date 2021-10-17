@@ -25,7 +25,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'афиша соб
 						</div>
 						<div class="text_place"><p><?=$article->description;?></p></div>
 					</div>
-					<div <?=$article->time ? 'class="date_place"' : 'class="display_none"'?>><i class="fab fa-algolia"></i><p><?=$article->time;?></p></div>
+					<div <?=date("d.m.Y", strtotime($article->time)) ? 'class="date_place"' : 'class="display_none"'?>><i class="fab fa-algolia"></i><p><?=date("d.m.Y", strtotime($article->time));?></p></div>
 					<div <?=$article->adress ? 'class="date_place"' : 'class="display_none"'?>><i class="fas fa-map-marker-alt"></i><p><?=$article->adress;?></p></div>
 					<div <?=$article->smdeskription ? 'class="date_place"' : 'class="display_none"'?>><i class="fas fa-at"></i><p><?=$article->smdeskription;?></p></div>
 					<div <?=$article->telefon ? 'class="address_place"' : 'class="display_none"'?>><i class="far fa-address-book"></i><p><?=$article->telefon;?></p></div>

@@ -40,7 +40,7 @@ class Article extends \yii\db\ActiveRecord
   {
     return [
       [['title'], 'required'],
-      [['title', 'description', 'content', 'time', 'adress', 'telefon', 'smdeskription', 'keywords', 'athorname', 'money'], 'string'],
+      [['title', 'description', 'content', 'time','time_end', 'adress', 'telefon', 'smdeskription', 'keywords', 'athorname', 'money'], 'string'],
       [['date'], 'date', 'format' => 'php:Y-m-d'],
       [['date'], 'default', 'value' => date('Y-m-d')],
       [['title'], 'string', 'max' => 255],
@@ -58,6 +58,8 @@ class Article extends \yii\db\ActiveRecord
       'description' => 'Description',
       'content' => 'Content',
       'date' => 'Date',
+      'time' => 'Time',
+      'time_end' => 'Time End',
       'image' => 'Image',
       'viewed' => 'Viewed',
       'user_id' => 'User ID',

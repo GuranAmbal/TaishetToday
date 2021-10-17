@@ -34,7 +34,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Городско�
 								<div class="post-body">
 									<div class="post-meta">
 										<a class="post-category cat-<?= $article->category->id; ?>" href="<?= Url::toRoute(['site/event-category', 'id' => $article->category->id]); ?>"><?= $article->category->title; ?></a>
-										<span class="post-date"><?= $article->time; ?></span>
+										<span class="post-date"><?= date("d.m.Y", strtotime($article->time)); ?></span>
 									</div>
 									<h3 class="post-title"><a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>"><?= $article->title; ?></a></h3>
 								</div>

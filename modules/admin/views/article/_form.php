@@ -20,8 +20,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'date')->textInput(['type' => 'date']) ?>
 
-    <?= $form->field($model, 'time')->textInput(['type' => 'datetime-local']) ?>
-
+    <?= $form->field($model, 'time')->textInput([
+        'type' => 'datetime-local',
+        
+    ]) ?>
+    <?= $form->field($model, 'time_end')->textInput([
+        'type' => 'datetime-local',
+        
+    ]) ?>
     <?= $form->field($model, 'adress')->textInput() ?>
 
     <?= $form->field($model, 'telefon')->textInput() ?>

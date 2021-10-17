@@ -118,15 +118,23 @@ class ArticleController extends Controller
     return $this->redirect(['index']);
   }
 
-  public function actionDeleteEvents()
+  /*public function actionDeleteEvents()
   {
     
     $query = Article::find()->where(['category_id' => '4'])->asArray()->all();
-   
-    die(var_dump( $query));
+    $nowDate = date("m-d-y G:i:s"); 
+     
+    foreach($query as $key) {
+      die(strtotime($nowDate));
+      if(!empty($key['time']) && strtotime($nowDate) > strtotime($key['time'])) {
+        die($key['title']);
+      }
+     
+  }
+    
    
     return $this->redirect(['index']);
-  }
+  }*/
   /**
    * Finds the Article model based on its primary key value.
    * If the model is not found, a 404 HTTP exception will be thrown.

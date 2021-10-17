@@ -118,7 +118,7 @@ PublicAsset::register($this);
 						<li><a href="<?= Url::toRoute(['site/historical']); ?>">История</a></li>
 						<li><a href="<?= Url::toRoute(['site/telefon']); ?>">Телефоны</a></li>
 						<li><a href="<?= Url::toRoute(['site/decloration']); ?>">Объявления</a></li>
-
+						
 					</ul>
 					<!-- /nav -->
 

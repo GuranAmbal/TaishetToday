@@ -19,9 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Article', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <p>
+    <!--<p>
         <?= Html::a('Delite Event Articles', ['delete-events'], ['class' => 'btn btn-success']) ?>
-    </p>
+    </p>-->
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'athorname',
             'viewed',
             'time',
-            
+            'time_end',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

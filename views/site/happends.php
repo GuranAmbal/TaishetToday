@@ -18,7 +18,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => $category->descrip
         </div>
         <div class="text_place"><p><?=$article->description;?></p></div>
       </div>
-      <div class="date_place"><i class="fab fa-algolia"></i><p><?=$article->time;?></p></div>
+      <div class="date_place"><i class="fab fa-algolia"></i><p><?=date("d.m.Y", strtotime($article->time));?></p></div>
 	    <div class="date_place"><i class="fas fa-map-marker-alt"></i><p><?=$article->adress;?></p></div>
 			<div class="date_place"><i class="fas fa-at"></i><p><?=$article->smdeskription;?></p></div>
 			<div class="address_place"><i class="far fa-address-book"></i><p><?=$article->telefon;?></p></div>

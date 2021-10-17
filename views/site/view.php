@@ -57,10 +57,10 @@ $this->registerMetaTag(['name' => 'description', 'content' => $description]);
 						<?php if ($article->money || $article->time) : ?>
 							<h3>Информация о событии: </h3>
 							<p>
-								<span <?= $article->time ? '' : 'style="display:none"' ?>>
+								<span <?= date("d.m.Y", strtotime($article->time)) ? '' : 'style="display:none"' ?>>
 									<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="clock" class="svg-inline--fa fa-clock fa-w-16" role="img" viewBox="0 0 512 512" style="&#10;    width: 15px;&#10;    height: 15px;&#10;    margin-right: 5px;&#10;">
 										<path fill="currentColor" d="M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8Zm92.49,313h0l-20,25a16,16,0,0,1-22.49,2.5h0l-67-49.72a40,40,0,0,1-15-31.23V112a16,16,0,0,1,16-16h32a16,16,0,0,1,16,16V256l58,42.5A16,16,0,0,1,348.49,321Z" /></svg>
-									<?= $article->time; ?>
+									<?= date("d.m.Y, h:i", strtotime($article->time)); ?>
 								</span>
 								<span <?= $article->money ? '' : 'style="display:none"' ?>>
 									<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="ruble-sign" class="svg-inline--fa fa-ruble-sign fa-w-12" role="img" viewBox="0 0 384 512" style="&#10;    width: 15px;&#10;    height: 15px;&#10;    margin-right: 5px;&#10;">

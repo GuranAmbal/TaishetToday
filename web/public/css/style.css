@@ -37,6 +37,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  padding-right: 10px;
+    padding-left: 10px;
 }
 h1,
 h2,
@@ -1276,3 +1278,16 @@ textarea.input {
     display: none;
   }
 }
+
+
+@media only screen and (max-width: 380px) {
+  .nav-logo .logo {
+    
+    font-size: 14px;
+  }
+  
+  .nav-logo__b {
+    font-size: 15px;
+    
+  }
+  }
