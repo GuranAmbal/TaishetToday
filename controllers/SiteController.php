@@ -363,4 +363,15 @@ class SiteController extends Controller
       'categoryDecloration' => $categoryDecloration,
     ]);
   }
+  public function actionMap()
+  {
+    
+
+
+
+    return $this->render('map', [
+      
+    ]);
+  }
+
 }

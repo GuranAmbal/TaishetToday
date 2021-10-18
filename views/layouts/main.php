@@ -88,6 +88,12 @@ PublicAsset::register($this);
 		<div><img src="https://mc.yandex.ru/watch/52055310" style="position:absolute; left:-9999px;" alt="" /></div>
 	</noscript>
 	<!-- /Yandex.Metrika counter -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
 </head>
 
 <body>
@@ -118,7 +124,7 @@ PublicAsset::register($this);
 						<li><a href="<?= Url::toRoute(['site/historical']); ?>">История</a></li>
 						<li><a href="<?= Url::toRoute(['site/telefon']); ?>">Телефоны</a></li>
 						<li><a href="<?= Url::toRoute(['site/decloration']); ?>">Объявления</a></li>
-						
+						<li><a href="<?= Url::toRoute(['site/map']); ?>">Карта</a></li>
 					</ul>
 					<!-- /nav -->
 
@@ -177,6 +183,7 @@ PublicAsset::register($this);
 						<li><a href="<?= Url::toRoute(['site/historical']); ?>">История</a></li>
 						<li><a href="<?= Url::toRoute(['site/telefon']); ?>">Телефоны</a></li>
 						<li><a href="<?= Url::toRoute(['site/decloration']); ?>">Объявления</a></li>
+						<li><a href="<?= Url::toRoute(['site/map']); ?>">Карта</a></li>
 					</ul>
 				</div>
 				<!-- /nav -->
@@ -271,6 +278,7 @@ PublicAsset::register($this);
 									<li><a href="<?= Url::toRoute(['site/place']); ?>">История</a></li>
 									<li><a href="<?= Url::toRoute(['site/telefon']); ?>">Телефоны</a></li>
 									<li><a href="<?= Url::toRoute(['site/decloration']); ?>">Объявления</a></li>
+									<li><a href="<?= Url::toRoute(['site/map']); ?>">Карта</a></li>
 								</ul>
 							</div>
 						</div>
@@ -305,6 +313,7 @@ PublicAsset::register($this);
 	</footer>
 	<!-- /Footer -->
 	<?php $this->endBody() ?>
+	
 </body>
 
 </html>
